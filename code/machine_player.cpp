@@ -148,7 +148,7 @@ int machine_player(){
 						}
 						i+=s;
 					}
-					if(i==4 && s==1)   //不確定(原為i==5) 
+					if(i==4 && s==1)  
 					{
 						i=i-4;
 					}

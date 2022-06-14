@@ -2,14 +2,12 @@
 #include<stdlib.h>
 #include<string>
 #include<time.h>
-
 #include <algorithm> 
 #include <functional>
-
 #define PEOPLE 4  //有幾個人
 #define USERNUM 5  //每人牌數
 using namespace std;
-
+// 人機對戰模式
 string pflo[4]={"黑桃","愛心","方塊","梅花"};
 string pnum[13]={"A","2","3","4","5","6","7","8","9","10","J","Q","K"};
 void cardfunc(int &, int &, int &, int &, int &, int &, int &, int &, int &);

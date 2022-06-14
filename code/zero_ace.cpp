@@ -39,7 +39,7 @@ int full_player(){
         int sum_old=0;
 //發牌 
         srand((unsigned)time(NULL));
-        for(int i=0;i<4;i++){  //poker設初值(devc++)
+        for(int i=0;i<4;i++){  //poker設初值
             for(int j=0;j<13;j++){
                 poker[i][j]=0;
             }
@@ -116,14 +116,7 @@ int full_player(){
 						SetColor();
 						goto end;
 					}
-					/*
-					if(i>3 && s==1)
-						i=i-4;
-					else if(i<0 && s==-1)
-						i=i+4;
-					else 
-						i=i;
-					*/	
+	
 					useless_card=0;
 					cout << "PLAYER_" << i+1 << ": ";  
 					for(int j=0;j<USERNUM;j++)   

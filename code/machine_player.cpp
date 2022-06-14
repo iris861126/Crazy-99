@@ -6,21 +6,21 @@
 #include <algorithm> 
 #include <functional>
 
-#define PEOPLE 4  //¦³´X­Ó¤H
-#define USERNUM 5  //¨C¤HµP¼Æ
+#define PEOPLE 4  //æœ‰å¹¾å€‹äºº
+#define USERNUM 5  //æ¯äººç‰Œæ•¸
 using namespace std;
 
-string pflo[4]={"¶Â®ç","·R¤ß","¤è¶ô","±öªá"};
+string pflo[4]={"é»‘æ¡ƒ","æ„›å¿ƒ","æ–¹å¡Š","æ¢…èŠ±"};
 string pnum[13]={"A","2","3","4","5","6","7","8","9","10","J","Q","K"};
 void cardfunc(int &, int &, int &, int &, int &, int &, int &, int &, int &);
 void circle(int &, int &);
 void num_5_func(int &, int &, int&);
 
-int initialcard(){
-        int poker[4][13]={0};  // 0:µP°ï ; 1:¤âµP ; -1:¥Î±¼ªºµP 
-        string hand_card[PEOPLE][USERNUM];  //¨Ï¥ÎªÌ4¤H ¨C¤H¦³5±iµP
-        string card[4][13];  //µP°ïªºµP 
-        int flo,num,all;  //¥Î¨Ó²£¥Í¶Ã¼Æ
+int machine_player(){
+        int poker[4][13]={0};  // 0:ç‰Œå † ; 1:æ‰‹ç‰Œ ; -1:ç”¨æ‰çš„ç‰Œ 
+        string hand_card[PEOPLE][USERNUM];  //ä½¿ç”¨è€…4äºº æ¯äººæœ‰5å¼µç‰Œ
+        string card[4][13];  //ç‰Œå †çš„ç‰Œ 
+        int flo,num,all;  //ç”¨ä¾†ç”¢ç”Ÿäº‚æ•¸
         int a[4][5],b[4][5];
         int card_no,flower,number;
         int count=0;
@@ -37,9 +37,9 @@ int initialcard(){
         int max_order=0;
         int max_card=0;
         int less_card[5]={0};
-//µoµP 
+//ç™¼ç‰Œ 
         srand((unsigned)time(NULL));
-        for(int i=0;i<4;i++){  //poker³]ªì­È(devc++)
+        for(int i=0;i<4;i++){  //pokerè¨­åˆå€¼(devc++)
             for(int j=0;j<13;j++){
                 poker[i][j]=0;
             }
@@ -47,7 +47,7 @@ int initialcard(){
         
         for(int i=0;i<PEOPLE;i++) 
 		{  
-                for(int j=0;j<USERNUM;j++)    //¨C­Ó¤HªºµP¼Æ
+                for(int j=0;j<USERNUM;j++)    //æ¯å€‹äººçš„ç‰Œæ•¸
 				{  
                     do{
                         all=(int)rand()%52;
@@ -62,14 +62,14 @@ int initialcard(){
                
     	}
                 
-//¥XµP 
+//å‡ºç‰Œ 
 //		for(int i=0;i<PEOPLE;i++)
 //		{
 		for(int i=0;i<PEOPLE;i+=s)
 		{
 				cout << " loser_num= " << loser_num << endl;
 				do{
-					if(loser[i]==1)  //¸õ¹L¿é®a 
+					if(loser[i]==1)  //è·³éè¼¸å®¶ 
 					{
 						i+=s;
 						if(i>3 && s==1)
@@ -80,7 +80,7 @@ int initialcard(){
 						{
 							i=3;
 						} 
-						if(loser[i]==1)  //¸õ¹L¿é®a 
+						if(loser[i]==1)  //è·³éè¼¸å®¶ 
 						{
 							i+=s;
 							if(i>3 && s==1)
@@ -91,7 +91,7 @@ int initialcard(){
 							{
 								i=3;
 							} 
-							if(loser[i]==1)  //¸õ¹L¿é®a 
+							if(loser[i]==1)  //è·³éè¼¸å®¶ 
 							{
 								i+=s;
 								if(i>3 && s==1)
@@ -105,7 +105,7 @@ int initialcard(){
 							}
 						}
 					}
-					if(loser_num ==3)  //¤w¸g¿é±¼ªº¤H¼Æ 
+					if(loser_num ==3)  //å·²ç¶“è¼¸æ‰çš„äººæ•¸ 
 					{ 	
 						cout << "  *********************" << endl;
 						cout << "  *                   *" << endl;
@@ -126,7 +126,7 @@ int initialcard(){
 					cout << "PLAYER_" << i+1 << ": ";  
 					for(int j=0;j<USERNUM;j++)   
 					{  	
-						cout << hand_card[i][j] << "  ";  //Åã¥Ü·í§½ªº¤âµP 
+						cout << hand_card[i][j] << "  ";  //é¡¯ç¤ºç•¶å±€çš„æ‰‹ç‰Œ 
 						
 						if( (b[i][j]!=3) && (b[i][j]!=4) && (b[i][j]!=9) && (b[i][j]!=10) && (b[i][j]!=11) && (b[i][j]!=12))
 						{
@@ -137,7 +137,7 @@ int initialcard(){
 						}
 					} 
 					
-					if(useless_card==5)  //­è¿é 
+					if(useless_card==5)  //å‰›è¼¸ 
 					{
 						cout << "\nPLAYER_" << i+1<< " LOSE!" << endl;
 						cout << "---------------------------------------------------------------" << endl;
@@ -150,7 +150,7 @@ int initialcard(){
 						}
 						i+=s;
 					}
-					if(i==4 && s==1)   //¤£½T©w(­ì¬°i==5) 
+					if(i==4 && s==1)   //ä¸ç¢ºå®š(åŸç‚ºi==5) 
 					{
 						i=i-4;
 					}
@@ -163,7 +163,7 @@ int initialcard(){
 				
 				cout << "\ni= " << i << endl;
 /* 
-//¦L¥X±óµP 
+//å°å‡ºæ£„ç‰Œ 
 				for (int w=0 ; w<4 ; w++)
 				{
 					for (int v=0 ; v<13 ; v++)
@@ -176,15 +176,15 @@ int initialcard(){
 					}
 				} 	
 */				cout << endl;
-//¯u¥¿¶}©l¥XµP	
+//çœŸæ­£é–‹å§‹å‡ºç‰Œ	
         		switch(i)
         		{	
 					case(0):			
 	        		do{
 						count=0;
 						cout << "\nNow sum is: " << sum << endl;
-			            cout << "¶Â®ç->0 ,·R¤ß->1 ,¤è¶ô->2 ,±öªá->3 " << endl; 
-						cout << "which card you want to throw(ex: 0 1 -> ¶Â®çA):";
+			            cout << "é»‘æ¡ƒ->0 ,æ„›å¿ƒ->1 ,æ–¹å¡Š->2 ,æ¢…èŠ±->3 " << endl; 
+						cout << "which card you want to throw(ex: 0 1 -> é»‘æ¡ƒA):";
 						cin >> flower >> number;
 						
 						c=0;
@@ -201,7 +201,7 @@ int initialcard(){
 							}
 							if(count==5)
 					    	{
-					    		cout << "§Aªº¤â¤¤µL¦¹µP¡A½Ğ­«·s¿é¤J" << endl;
+					    		cout << "ä½ çš„æ‰‹ä¸­ç„¡æ­¤ç‰Œï¼Œè«‹é‡æ–°è¼¸å…¥" << endl;
 							}
 						}	 
 					}while(count==5);			    
@@ -212,10 +212,10 @@ int initialcard(){
 					case (3):
 						count=0;
 						cout << "\nNow sum is: " << sum << endl;
-			            cout << "¶Â®ç->0 ,·R¤ß->1 ,¤è¶ô->2 ,±öªá->3 " << endl; 
-						cout << "which card you want to throw(ex: 0 1 -> ¶Â®çA):";
+			            cout << "é»‘æ¡ƒ->0 ,æ„›å¿ƒ->1 ,æ–¹å¡Š->2 ,æ¢…èŠ±->3 " << endl; 
+						cout << "which card you want to throw(ex: 0 1 -> é»‘æ¡ƒA):";
 						
-						//¼Æ¦rµP
+						//æ•¸å­—ç‰Œ
 					    max_card=0;
 					    max_order=0;
 						int count_num_card=0;
@@ -249,7 +249,7 @@ int initialcard(){
 						max_card = 0;
 						max_order = 0;
 						cout <<"count_num_card= " << count_num_card << endl;
-						//¥\¯àµP						
+						//åŠŸèƒ½ç‰Œ						
 						if(count_num_card==0)
 						{	
 							for(int j=0;j<USERNUM;j++)   
@@ -380,9 +380,9 @@ int initialcard(){
 				cout << endl;
 				
 				
-				if(loser_num ==3)  //¤w¸g¿é±¼ªº¤H¼Æ 
+				if(loser_num ==3)  //å·²ç¶“è¼¸æ‰çš„äººæ•¸ 
 				{
-					if(loser[i]==1)  //¸õ¹L¿é®a 
+					if(loser[i]==1)  //è·³éè¼¸å®¶ 
 					{
 						i+=s;
 						if(i>3 && s==1)
@@ -393,7 +393,7 @@ int initialcard(){
 						{
 							i=3;
 						} 
-						if(loser[i]==1)  //¸õ¹L¿é®a 
+						if(loser[i]==1)  //è·³éè¼¸å®¶ 
 						{
 							i+=s;
 							if(i==3 && s==1)
@@ -404,7 +404,7 @@ int initialcard(){
 							{
 								i=3;
 							} 
-							if(loser[i]==1)  //¸õ¹L¿é®a 
+							if(loser[i]==1)  //è·³éè¼¸å®¶ 
 							{
 								i+=s;
 								if(i==3 && s==1)
@@ -425,7 +425,7 @@ int initialcard(){
 						cout << "  *********************" << endl;
 					goto end;
 				}
-				//¦L¥X³Ñ¾lªºµP(µP°ï)
+				//å°å‡ºå‰©é¤˜çš„ç‰Œ(ç‰Œå †)
 				for (int w=0 ; w<4 ; w++)
 				{
 					for (int v=0 ; v<13 ; v++)
@@ -439,7 +439,7 @@ int initialcard(){
 				}
 				if(loser[i]!=1)
 				{
-//©âµP					
+//æŠ½ç‰Œ					
 					do{
 		            all=(int)rand()%52;
 		            flo=all/13;
@@ -457,7 +457,7 @@ int initialcard(){
 					cout << "\n---------------------------------------------------------------" << endl;
 					
 					
-//§PÂ_µP¦ÀÁÙ¦³¨S¦³µP	
+//åˆ¤æ–·ç‰Œæ± é‚„æœ‰æ²’æœ‰ç‰Œ	
 					poker_pool=0;				
 					for(int x=0; x<4 ; x++)
 					{
@@ -471,7 +471,7 @@ int initialcard(){
 						}
 					}
 					cout << "poker_pool= " << poker_pool << endl;
-//­«·s¬~µP					
+//é‡æ–°æ´—ç‰Œ					
 					if(poker_pool == 0)
 					{
 						for(int x=0; x<4 ; x++)
@@ -485,7 +485,7 @@ int initialcard(){
 							}
 						}
 					} 
-//¤@ª½´`Àô¤U¥h 
+//ä¸€ç›´å¾ªç’°ä¸‹å» 
 					if(number==5)
 					{
 						num_5_func(i,tmp,s);
@@ -516,7 +516,7 @@ int initialcard(){
 			
 			
 				}
-/*		//¦L¥X³Ñ¾lªºµP(µP°ï)
+/*		//å°å‡ºå‰©é¤˜çš„ç‰Œ(ç‰Œå †)
 		for (int w=0 ; w<4 ; w++)
 		{
 			for (int v=0 ; v<13 ; v++)
@@ -570,12 +570,12 @@ void cardfunc(int &i, int &j, int &k, int &l, int &turn_around, int &a, int &b, 
 	
 	case 4:
 		do{
-			if(k==0) //¤H 
+			if(k==0) //äºº 
 			{
-				cout << "use function card ¡÷1 / use number card ¡÷-1" << endl;
+				cout << "use function card â†’1 / use number card â†’-1" << endl;
 				cin >> func_or_num;
 			}
-			else if(k==1 || k==2 || k==3) //¾÷ 
+			else if(k==1 || k==2 || k==3) //æ©Ÿ 
 			{
 				func_or_num = 1;
 			}
@@ -590,15 +590,15 @@ void cardfunc(int &i, int &j, int &k, int &l, int &turn_around, int &a, int &b, 
 			}
 			else
 			{
-				cout << "¿é¤JµL®Ä¡A½Ğ­«·s¿é¤J¡G " << endl;
+				cout << "è¼¸å…¥ç„¡æ•ˆï¼Œè«‹é‡æ–°è¼¸å…¥ï¼š " << endl;
 			}
 		}while((func_or_num!=1) && (func_or_num!=-1) );
 	break;
 	
 	case 5:
-		if(k==0) //¤H 
+		if(k==0) //äºº 
 		{
-			cout << "use function card ¡÷1 / use number card ¡÷-1" << endl;
+			cout << "use function card â†’1 / use number card â†’-1" << endl;
 			cin >> func_or_num;
 			do{		
 				if (func_or_num == 1) 
@@ -614,7 +614,7 @@ void cardfunc(int &i, int &j, int &k, int &l, int &turn_around, int &a, int &b, 
 							{
 								if(l==n+1)
 								{
-									cout << "¿é¤JµL®Ä¡A½Ğ­«·s¿é¤J¡G " << endl;
+									cout << "è¼¸å…¥ç„¡æ•ˆï¼Œè«‹é‡æ–°è¼¸å…¥ï¼š " << endl;
 								 	illegal = 1;
 								}
 							}
@@ -622,12 +622,12 @@ void cardfunc(int &i, int &j, int &k, int &l, int &turn_around, int &a, int &b, 
 							{
 								if(l==k+1)
 								{
-									cout << "¿é¤JµL®Ä¡A½Ğ­«·s¿é¤J¡G " << endl;
+									cout << "è¼¸å…¥ç„¡æ•ˆï¼Œè«‹é‡æ–°è¼¸å…¥ï¼š " << endl;
 								}
 								else if(l<5 && l>0)	
 									break;
 								else
-									cout << "¿é¤JµL®Ä¡A½Ğ­«·s¿é¤J¡G " << endl;	
+									cout << "è¼¸å…¥ç„¡æ•ˆï¼Œè«‹é‡æ–°è¼¸å…¥ï¼š " << endl;	
 							}
 						}
 						
@@ -639,11 +639,11 @@ void cardfunc(int &i, int &j, int &k, int &l, int &turn_around, int &a, int &b, 
 				}
 				else
 				{
-					cout << "¿é¤JµL®Ä¡A½Ğ­«·s¿é¤J¡G " << endl;
+					cout << "è¼¸å…¥ç„¡æ•ˆï¼Œè«‹é‡æ–°è¼¸å…¥ï¼š " << endl;
 				}
 			}while((func_or_num!=1) && (func_or_num!=-1) );
 		}
-		else if(k==1 || k==2 || k==3) //¾÷ 
+		else if(k==1 || k==2 || k==3) //æ©Ÿ 
 		{
 			func_or_num = 1;
 			do{		
@@ -680,12 +680,12 @@ void cardfunc(int &i, int &j, int &k, int &l, int &turn_around, int &a, int &b, 
 	case 10:
 	    
 		do{
-			if(k==0) //¤H 
+			if(k==0) //äºº 
 			{
-				cout << "use function card ¡÷1 / use number card ¡÷-1" << endl;
+				cout << "use function card â†’1 / use number card â†’-1" << endl;
 				cin >> func_or_num;
 			}
-			else if(k==1 || k==2 || k==3) //¾÷ 
+			else if(k==1 || k==2 || k==3) //æ©Ÿ 
 			{
 				func_or_num = 1;
 				choose = -1;
@@ -694,14 +694,14 @@ void cardfunc(int &i, int &j, int &k, int &l, int &turn_around, int &a, int &b, 
 			if (func_or_num == 1) 
 			{
 				do{
-				cout << "You want to +10 or -10(1 ¡÷+10 / -1 ¡÷-10): ";
+				cout << "You want to +10 or -10(1 â†’+10 / -1 â†’-10): ";
 				cin >> choose;
 				if (choose==1)
 					j=i+j;
 				else if(choose==-1)
 					j=j-i;
 				else
-					cout << "¿é¤JµL®Ä¡A½Ğ­«·s¿é¤J¡G " << endl;
+					cout << "è¼¸å…¥ç„¡æ•ˆï¼Œè«‹é‡æ–°è¼¸å…¥ï¼š " << endl;
 				}while( (choose!=1) && (choose!=-1) );
 			}
 			else if(func_or_num == -1) 
@@ -710,19 +710,19 @@ void cardfunc(int &i, int &j, int &k, int &l, int &turn_around, int &a, int &b, 
 			}
 			else
 			{
-				cout << "¿é¤JµL®Ä¡A½Ğ­«·s¿é¤J¡G " << endl;
+				cout << "è¼¸å…¥ç„¡æ•ˆï¼Œè«‹é‡æ–°è¼¸å…¥ï¼š " << endl;
 			}
 		}while((func_or_num!=1) && (func_or_num!=-1) );
 	break;
 	
 	case 11:
 		do{
-			if(k==0) //¤H 
+			if(k==0) //äºº 
 			{
-				cout << "use function card ¡÷1 / use number card ¡÷-1" << endl;
+				cout << "use function card â†’1 / use number card â†’-1" << endl;
 				cin >> func_or_num;
 			}
-			else if(k==1 || k==2 || k==3) //¾÷ 
+			else if(k==1 || k==2 || k==3) //æ©Ÿ 
 			{
 				func_or_num = 1;
 			}
@@ -737,19 +737,19 @@ void cardfunc(int &i, int &j, int &k, int &l, int &turn_around, int &a, int &b, 
 			}
 			else
 			{
-				cout << "¿é¤JµL®Ä¡A½Ğ­«·s¿é¤J¡G " << endl;
+				cout << "è¼¸å…¥ç„¡æ•ˆï¼Œè«‹é‡æ–°è¼¸å…¥ï¼š " << endl;
 			}
 		}while((func_or_num!=1) && (func_or_num!=-1) );
 	break;
 	
 	case 12:	
 		do{
-			if(k==0) //¤H 
+			if(k==0) //äºº 
 			{
-				cout << "use function card ¡÷1 / use number card ¡÷-1" << endl;
+				cout << "use function card â†’1 / use number card â†’-1" << endl;
 				cin >> func_or_num;
 			}
-			else if(k==1 || k==2 || k==3) //¾÷ 
+			else if(k==1 || k==2 || k==3) //æ©Ÿ 
 			{
 				func_or_num = 1;
 				choose = -1;
@@ -758,14 +758,14 @@ void cardfunc(int &i, int &j, int &k, int &l, int &turn_around, int &a, int &b, 
 			if (func_or_num == 1) 
 			{
 				do{
-				cout << "You want to +20 or -20(1 ¡÷+20 / -1 ¡÷-20): ";
+				cout << "You want to +20 or -20(1 â†’+20 / -1 â†’-20): ";
 				cin >> choose;
 				if (choose==1)
 					j=20+j;
 				else if(choose==-1)
 					j=j-20;
 				else
-					cout << "¿é¤JµL®Ä¡A½Ğ­«·s¿é¤J¡G " << endl;
+					cout << "è¼¸å…¥ç„¡æ•ˆï¼Œè«‹é‡æ–°è¼¸å…¥ï¼š " << endl;
 				}while( (choose!=1) && (choose!=-1) );
 			}
 			else if(func_or_num == -1) 
@@ -774,19 +774,19 @@ void cardfunc(int &i, int &j, int &k, int &l, int &turn_around, int &a, int &b, 
 			}
 			else
 			{
-				cout << "¿é¤JµL®Ä¡A½Ğ­«·s¿é¤J¡G " << endl;
+				cout << "è¼¸å…¥ç„¡æ•ˆï¼Œè«‹é‡æ–°è¼¸å…¥ï¼š " << endl;
 			}
 		}while((func_or_num!=1) && (func_or_num!=-1) );
 	break;
 	
 	case 13:
 		do{
-			if(k==0) //¤H 
+			if(k==0) //äºº 
 			{
-				cout << "use function card ¡÷1 / use number card ¡÷-1" << endl;
+				cout << "use function card â†’1 / use number card â†’-1" << endl;
 				cin >> func_or_num;
 			}
-			else if(k==1 || k==2 || k==3) //¾÷ 
+			else if(k==1 || k==2 || k==3) //æ©Ÿ 
 			{
 				func_or_num = 1;
 			}	
@@ -801,7 +801,7 @@ void cardfunc(int &i, int &j, int &k, int &l, int &turn_around, int &a, int &b, 
 			}
 			else
 			{
-				cout << "¿é¤JµL®Ä¡A½Ğ­«·s¿é¤J¡G " << endl;
+				cout << "è¼¸å…¥ç„¡æ•ˆï¼Œè«‹é‡æ–°è¼¸å…¥ï¼š " << endl;
 			}
 		}while((func_or_num!=1) && (func_or_num!=-1) );
 	break;
@@ -823,14 +823,14 @@ int main()
 		cout << "\nFirst you can see your handcards on the screen" << endl;
 	    //cout << "/nDecide how many card you want throw(1or2)" << endl;
 	    cout << "\nPlease emter the color first" << endl;
-	    cout << "\nSuch as ¶Â®ç¡÷0 /¬õ¤ß¡÷1/¤è¶ô¡÷2/±öªá¡÷3" << endl;
+	    cout << "\nSuch as é»‘æ¡ƒâ†’0 /ç´…å¿ƒâ†’1/æ–¹å¡Šâ†’2/æ¢…èŠ±â†’3" << endl;
 	    cout << "\nSecond enter the number of card(1~13)" << endl;
 	    //cout << "/nIf you want to throw two cards just do it twice" << endl;
 	    cout << "\nFinal Good Luck and Have Fun!!!" << endl;
 	    cout << endl;
 	}
     
-	initialcard();
+	machine_player();
     
     system("Pause");
 	return 0;

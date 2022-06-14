@@ -38,7 +38,7 @@ int full_player(){
         int sum_old=0;
 //發牌 
         srand((unsigned)time(NULL));
-        for(int i=0;i<4;i++){  //poker設初值(devc++)
+        for(int i=0;i<4;i++){  //poker設初值
             for(int j=0;j<13;j++){
                 poker[i][j]=0;
             }
@@ -153,7 +153,7 @@ int full_player(){
 						}
 						i+=s;
 					}
-					if(i==4 && s==1)   //不確定(原為i==5) 
+					if(i==4 && s==1)
 					{
 						i=i-4;
 					}
